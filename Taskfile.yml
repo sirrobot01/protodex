@@ -1,0 +1,80 @@
+version: '3'
+
+env:
+  DATA_DIR: ./data
+
+vars:
+  BINARY_NAME: protodex
+  BUILD_DIR: bin
+
+tasks:
+  default:
+    desc: Protodex Taskfile
+    cmds:
+      - task --list
+
+  build:frontend:
+    desc: Build React frontend
+    dir: web
+    cmds:
+      - npm install
+      - npm run build
+    sources:
+      - "web/src/**/*"
+      - "web/package.json"
+      - "web/package-lock.json"
+    generates:
+      - "internal/server/web/dist/**/*"
+  build:
+    desc: Build the protodex binary with embedded frontend
+    deps: [build:frontend]
+    cmds:
+        - go build -o {{.BUILD_DIR}}/{{.BINARY_NAME}} ./cmd/{{.BINARY_NAME}}
+        - echo '✅ Build successful! Binary located at {{.BUILD_DIR}}/{{.BINARY_NAME}}'
+
+
+  build:go:
+    desc: Build protodex without downloading protoc
+    cmds:
+      - go build -o {{.BUILD_DIR}}/{{.BINARY_NAME}} ./cmd/{{.BINARY_NAME}}
+
+  serve:
+    desc: Run the protodex server
+    cmds:
+      - "./{{.BUILD_DIR}}/{{.BINARY_NAME}} serve --data-dir {{.DATA_DIR}}"
+  clean:
+    desc: Clean build artifacts
+    cmds:
+      - rm -rf {{.BUILD_DIR}}
+      - rm -f coverage.out coverage.html
+
+  test:
+    desc: Run Go tests
+    cmds:
+      - go test -v ./...
+
+  test:coverage:
+    desc: Run Go tests with coverage
+    cmds:
+      - go test -v -coverprofile={{.BUILD_DIR}}/coverage.out ./...
+      - go tool cover -html=coverage.out -o {{.BUILD_DIR}}/coverage.html
+      - echo 'Coverage report generated at {{.BUILD_DIR}}/coverage.html'
+
+  lint:
+    desc: Run Go linter
+    cmds:
+      - go fmt ./...
+      - go vet ./...
+      - golangci-lint run
+
+  format:
+    desc: Format Go code
+    cmds:
+      - go fmt ./...
+      - goimports -w -local github.com/sirrobot01/protodex .
+    
+  pre-commit:
+    desc: Run pre-commit checks
+    deps: [format, lint, test:coverage]
+    cmds:
+      - echo '✅ All pre-commit checks passed!'
