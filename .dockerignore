@@ -1,0 +1,39 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+docs/
+README.md
+LICENCE
+
+# CI/CD
+.github/
+.goreleaser.yaml
+
+# Development files
+*.md
+Taskfile.yml
+.golangci.yml
+
+# Build artifacts
+bin/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Examples
+examples/
+
+# Web assets (not needed for server)
+web/node_modules/
+web/dist/
+web/build/
