@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package example;
+
+import "user.proto";
+
+option go_package="./examplepb";
+
+message Address {
+  string id = 1;
+  string street = 2;
+  string city = 3;
+  string state = 4;
+  string postal_code = 5;
+  string country = 6;
+  AddressType type = 7;
+  
+  enum AddressType {
+    UNKNOWN = 0;
+    HOME = 1;
+    WORK = 2;
+    BILLING = 3;
+    SHIPPING = 4;
+  }
+}
+
+message AddressBook {
+  repeated Address addresses = 1;
+  User owner = 2;  // Reference to user.proto
+}
+
+service AddressService {
+  rpc GetAddress(GetAddressRequest) returns (Address);
+  rpc CreateAddress(CreateAddressRequest) returns (Address);
+  rpc UpdateAddress(UpdateAddressRequest) returns (Address);
+  rpc DeleteAddress(DeleteAddressRequest) returns (DeleteAddressResponse);
+  rpc ListUserAddresses(ListUserAddressesRequest) returns (ListUserAddressesResponse);
+}
+
+message GetAddressRequest {
+  string address_id = 1;
+}
+
+message CreateAddressRequest {
+  Address address = 1;
+  string user_id = 2;
+}
+
+message UpdateAddressRequest {
+  string address_id = 1;
+  Address address = 2;
+}
+
+message DeleteAddressRequest {
+  string address_id = 1;
+}
+
+message DeleteAddressResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ListUserAddressesRequest {
+  string user_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+message ListUserAddressesResponse {
+  repeated Address addresses = 1;
+  int32 total_count = 2;
+}

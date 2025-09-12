@@ -1,0 +1,24 @@
+package:
+    name: examples
+    description: ""
+files:
+    exclude: []
+    base_dir: .
+gen:
+    languages:
+        - name: go
+          output_dir: examples/gen/go
+          options: {}
+          plugins:
+            - name: go-grpc
+              command: protoc-gen-go-grpc
+              options: { }
+        - name: python
+          output_dir: examples/gen/python
+          options: {}
+          plugins: []
+deps:
+    - name: google/protobuf
+      type: google-well-known
+      source: ""
+plugins: []

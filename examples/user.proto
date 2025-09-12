@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package example;
+
+option go_package="./examplepb";
+
+message User {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  int32 age = 4;
+  repeated string roles = 5;
+  
+  message UserAddress {
+    string street = 1;
+    string city = 2;
+    string country = 3;
+    string postal_code = 4;
+  }
+
+  UserAddress address = 6;
+}
+
+service UserService {
+  rpc GetUser(GetUserRequest) returns (User);
+  rpc CreateUser(CreateUserRequest) returns (User);
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message CreateUserRequest {
+  User user = 1;
+}
+
+message ListUsersRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+}
+
+message ListUsersResponse {
+  repeated User users = 1;
+  int32 total_count = 2;
+}

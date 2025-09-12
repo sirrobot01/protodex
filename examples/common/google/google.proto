@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package custom.google;
+option go_package="./googlepb";
+
+
+message Empty {}
+
+message DoubleValue {
+  double value = 1;
+}
+
+message FloatValue {
+  float value = 1;
+}
