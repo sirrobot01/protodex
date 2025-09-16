@@ -12,7 +12,7 @@
 
 Protodex is a CLI tool and registry server for managing protobuf schemas and generating client code. It provides a simple workflow to push/pull protobuf packages to/from a central registry, validate schemas, and generate code in multiple languages using custom plugins.
 
-You can view the documentation at [protodex.dev](https://protodex.dev).
+You can view the documentation at [docs.protodex.dev](https://docs.protodex.dev).
 
 ## Features
 
