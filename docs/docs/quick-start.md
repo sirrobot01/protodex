@@ -201,7 +201,7 @@ protodex pull my-service:v0.1.0
 
 Protodex uses `protoc` plugins to generate code for different languages and frameworks. Plugins required for simple message code generation are downloaded automatically as needed.
 
-For other plugins (e.g. gRPC, validation), you may need to install them manually and ensure they are in your PATH. You can then configure them in your `protodex.yaml` file. Check the [CLI Reference](overview.md) for details.
+For other plugins (e.g. gRPC, validation), you may need to install them manually and ensure they are in your PATH. You can then configure them in your `protodex.yaml` file. Check the [CLI Reference](cli-overview.md) for details.
 
 ```yaml
 gen:
@@ -274,8 +274,8 @@ which protoc-gen-{name_of_plugin}
 Now that you've created your first Protodex project:
 
 1. **[Configuration Guide](yaml-config.md)** - Learn about advanced configuration options
-2. **[CLI Reference](overview.md)** - Master all available commands
-3. **[Registry Guide](overview.md)** - Set up and manage registries
+2. **[CLI Reference](cli-overview.md)** - Master all available commands
+3. **[Registry Guide](cli-overview.md)** - Set up and manage registries
 
 ## Getting Help
 

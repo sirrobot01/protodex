@@ -2,6 +2,7 @@
 .DS_Store
 node_modules/
 dist/
+internal/server/web/dist/
 .env
 .env.local
 .env.*.local

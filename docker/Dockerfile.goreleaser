@@ -1,0 +1,28 @@
+# Final stage only - GoReleaser provides the binary
+FROM alpine:latest
+
+# Install ca-certificates for HTTPS requests
+RUN apk --no-cache add ca-certificates
+
+# Create non-root user
+RUN addgroup -g 1000 protodex && \
+    adduser -D -s /bin/sh -u 1000 -G protodex protodex
+
+# Set working directory
+WORKDIR /home/protodex
+
+# Copy the binary (GoReleaser puts it in build context)
+COPY protodex .
+
+# Make it executable and change ownership
+RUN chmod +x protodex && \
+    chown protodex:protodex protodex
+
+# Switch to non-root user
+USER protodex
+
+# Expose port
+EXPOSE 8080
+
+# Default command
+CMD ["./protodex", "serve", "--port", "8080"]

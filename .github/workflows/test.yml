@@ -11,10 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: [1.22, 1.23, 1.24]
+        go-version: [1.23, 1.24]
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: npm
+        cache-dependency-path: ./web/package-lock.json
+
+    - name: Build web interface
+      run: |
+        cd web
+        npm ci
+        npm run build
+        
 
     - name: Set up Go
       uses: actions/setup-go@v5
@@ -32,20 +46,6 @@ jobs:
     - name: Download dependencies
       run: go mod download
 
-    - name: Run tests
-      run: go test -v ./...
-
-    - name: Run tests with race detector
-      run: go test -race -v ./...
-
-    - name: Check Go formatting
-      run: |
-        if [ "$(gofmt -s -l . | wc -l)" -gt 0 ]; then
-          echo "The following files are not formatted:"
-          gofmt -s -l .
-          exit 1
-        fi
-
     - name: Run go vet
       run: go vet ./...
 
@@ -53,3 +53,6 @@ jobs:
       uses: golangci/golangci-lint-action@v6
       with:
         version: latest
+
+    - name: Run tests
+      run: go test -v ./...

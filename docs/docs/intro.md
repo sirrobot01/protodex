@@ -87,7 +87,7 @@ Ready to start using Protodex? Here's what to do next:
 1. **[Install Protodex](installation.md)** - Download and install the CLI tool
 2. **[Quick Start](quick-start.md)** - Create your first project
 3. **[Configuration](yaml-config.md)** - Learn about protodex.yaml configuration
-4. **[CLI Reference](overview.md)** - Master the command-line interface
+4. **[CLI Reference](cli-overview.md)** - Master the command-line interface
 
 ## Community & Support
 

@@ -86,11 +86,11 @@ Now that you have Protodex installed:
 
 1. **[Quick Start](quick-start)** - Create your first project
 2. **[Configuration](yaml-config.md)** - Learn about project configuration
-3. **[CLI Reference](overview.md)** - Master the command-line interface
+3. **[CLI Reference](cli-overview.md)** - Master the command-line interface
 
 ## Getting Help
 
 If you encounter issues:
 
-- **Documentation**: Check the [CLI Reference](overview.md)
+- **Documentation**: Check the [CLI Reference](cli-overview.md)
 - **GitHub Issues**: Report bugs at [github.com/sirrobot01/protodex/issues](https://github.com/sirrobot01/protodex/issues)

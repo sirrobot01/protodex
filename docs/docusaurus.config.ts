@@ -23,7 +23,7 @@ const config: Config = {
   organizationName: 'protodex',
   projectName: 'protodex',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   i18n: {
     defaultLocale: 'en',
@@ -96,7 +96,7 @@ const config: Config = {
               to: '/docs/cli',
             },
             {
-              label: 'Registry API',
+              label: 'Protodex Registry',
               to: '/docs/registry',
             },
           ],

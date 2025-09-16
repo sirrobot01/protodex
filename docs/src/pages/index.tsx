@@ -52,9 +52,9 @@ function HomepageHeader() {
                                 Get Started
                             </Link>
                             <Link
-                                className={clsx('button', styles.secondaryButton)}
-                                to="/docs/quick-start">
-                                Quick Start →
+                                className={clsx('button', styles.githubButton)}
+                                to="https://github.com/sirrobot01/protodex">
+                                ⭐ Star on GitHub
                             </Link>
                         </div>
                     </div>
@@ -79,11 +79,10 @@ gen:
   languages:
     - name: go
       output_dir: ./gen/go
-      module_path: github.com/user/user
 
 deps:
   - name: google/protobuf
-    source: google`}</pre>
+    type: google-well-known`}</pre>
                             </div>
                         </div>
                     </div>
@@ -105,13 +104,8 @@ function CallToAction() {
                     <div className={styles.ctaButtons}>
                         <Link
                             className={clsx('button', styles.primaryButton)}
-                            to="/docs/getting-started/installation">
+                            to="/docs/installation">
                             Install Protodex
-                        </Link>
-                        <Link
-                            className={clsx('button', styles.githubButton)}
-                            to="https://github.com/sirrobot01/protodex">
-                            ⭐ Star on GitHub
                         </Link>
                     </div>
                 </div>

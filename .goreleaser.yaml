@@ -3,6 +3,7 @@ version: 2
 before:
   hooks:
     - go mod tidy
+    - bash -c "cd web && npm ci && npm run build"
 
 builds:
   - env:
@@ -75,7 +76,7 @@ dockers:
   - image_templates:
       - "ghcr.io/sirrobot01/protodex:{{ .Tag }}"
       - "ghcr.io/sirrobot01/protodex:latest"
-    dockerfile: Dockerfile
+    dockerfile: docker/Dockerfile.goreleaser
     build_flag_templates:
       - "--pull"
       - "--label=org.opencontainers.image.created={{.Date}}"

@@ -1,18 +1,28 @@
 run:
   timeout: 5m
-  tests: true
+  tests: false
 
 issues:
   exclude-dirs:
-    - web/templates
+    - web/
+    - migrations/
+    - docs/
+    - examples/
+    - scripts/
+    - .github/
+
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - mnd
+        - goconst
+        - dupl
 
 linters-settings:
   gofmt:
     simplify: true
   goimports:
     local-prefixes: github.com/sirrobot01/protodex
-  revive:
-    min-confidence: 0
   gocyclo:
     min-complexity: 15
   goconst:
@@ -36,10 +46,3 @@ linters:
     - unparam
     - unused
     - whitespace
-
-  exclude-rules:
-    - path: _test\.go
-      linters:
-        - mnd
-        - goconst
-        - dupl

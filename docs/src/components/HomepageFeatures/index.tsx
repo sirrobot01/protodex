@@ -21,7 +21,7 @@ const FeatureList: FeatureItem[] = [
         Extend with custom plugins for any language or framework.
       </>
     ),
-    link: '/docs/cli/generate'
+    link: '/docs/cli-overview'
   },
   {
     title: 'Registry System',
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
         Versioning, access control, and collaboration made easy.
       </>
     ),
-    link: '/docs/registry/overview'
+    link: '/docs/registry'
   },
   {
     title: 'Open Source',
@@ -94,11 +94,10 @@ gen:
   languages:
     - name: go
       output_dir: ./gen/go
-      module_path: github.com/myuser/user-service
 
 deps:
   - name: google/protobuf
-    source: google`}</code>
+    type: google-well-known`}</code>
               </pre>
             </div>
           </div>
@@ -118,7 +117,9 @@ All schemas valid
 
 $ protodex generate go
 Generated Go code
-Generated TypeScript code
+
+$ protodex serve
+Serving registry at http://localhost:8080
 
 $ protodex push
 Published to registry`}</code>
